@@ -1,45 +1,68 @@
-# Frontend Developer Application Challenge
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-**Caption Cards** is a simple captions application. You are required to develop the frontend web application showcasing captions on cards. 
-You can fork this git repository and get to work!
+## Available Scripts
 
-**Due Date:** 6 days after Test email receipt.
+In the project directory, you can run:
 
-## **API Documentation**
-The backend of the captions application has already been created for you. All you have to do is consume it to the best of your abilities in your frontend application.
+### `npm start`
 
-[Captions Cards API Documentation](https://documenter.getpostman.com/view/7988284/SzKTvysQ?version=latest)
+Runs the app in the development mode.<br />
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-**Note:** All the user features are presented as endpoints by the API, so you have to use your initiative and creativity to represent them in your web application.
+The page will reload if you make edits.<br />
+You will also see any lint errors in the console.
 
-## Tools
-- Client side Framework: ***React/Redux***
-- Linting: ***ESLint***
-- Style Guide: ***Airbnb***
-- Testing: ***Jest***
-- Hosting: ***Netlify/Heroku***
+### `npm test`
 
-## Requirements
-1. Consume up to 6 server endpoints in inventive ways (any of your choosing)
-2. Take care to correctly structure your redux containers/reducers in a readable format
-3. Your props/types and states should be properly defined.
-4. Responsive web design for different screens (mobile/tablet/pc)
-5. Host code on Github repository, with a well detailed readme.
-6. Host the app on netlify/heroku.
-7. Use appropriate modals, loaders and spinners for better user interaction.
+Launches the test runner in the interactive watch mode.<br />
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
+### `npm run build`
 
-## Stand out
-1. Consume all server endpoints in inventive ways
-2. Beautiful and responsive component designs
-3. Make use of animations
-4. implement `axios` for API calls.
-5. use `styled components` for css styling.
+Builds the app for production to the `build` folder.<br />
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-## Guide
-### Design
-Below is a simple design to get you started on what the project look can be. 
-**Note:** this is only a guide, as you are free to use your initative and imagination.
+The build is minified and the filenames include the hashes.<br />
+Your app is ready to be deployed!
 
-<img width="1212" alt="Screenshot 2020-02-20 at 22 18 57" src="https://user-images.githubusercontent.com/60140805/74979630-4a010b80-542f-11ea-94f6-95311d91a407.png">
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
+### `npm run eject`
+
+**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+
+If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+
+You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+
+## Learn More
+
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+
+To learn React, check out the [React documentation](https://reactjs.org/).
+
+### Code Splitting
+
+This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+
+### Analyzing the Bundle Size
+
+This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+
+### Making a Progressive Web App
+
+This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+
+### Advanced Configuration
+
+This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+
+### Deployment
+
+This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+
+### `npm run build` fails to minify
+
+This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
