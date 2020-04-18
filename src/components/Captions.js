@@ -11,12 +11,13 @@ class Captions extends Component {
   }
 
   render() {
-    const captionText =  this.props.captions.map((caption) => <CaptionCard key={caption.id} content={caption.caption}/>);
+    const { captions } = this.props;
+    const captionText =  captions.map((caption) => <CaptionCard key={caption.id} content={caption.caption}/>);
     if (this.props.captions.length < 1) {
       return <Spinner/>
     } else {
       return (
-        this.props.captions &&
+        captions &&
         <div className="d-flex flex-wrap">
           {captionText}
         </div>
