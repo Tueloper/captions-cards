@@ -1,4 +1,4 @@
-import { GET_ALL_CAPTIONS } from './../actionTypes/index';
+import { GET_ALL_CAPTIONS, ADD_CAPTION } from './../actionTypes/index';
 
 const initialState = {
   captions: []

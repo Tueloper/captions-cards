@@ -18,7 +18,7 @@ class Captions extends Component {
     } else {
       return (
         captions &&
-        <div className="d-flex flex-wrap">
+        <div className="d-flex justify-content-center flex-wrap">
           {captionText}
         </div>
       )
