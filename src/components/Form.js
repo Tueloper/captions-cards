@@ -1,25 +1,40 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { addCaption } from './../redux/actions/index';
+import { connect } from 'react-redux';
 
+function mapDispatchToProps(dispatch) {
+	return {
+		addCaption: caption => dispatch(addCaption(caption))
+	}
+}
 class Form extends Component {
+	constructor(props) {
+		super(props);
+		this.initialState = {
+			caption: ''
+		}
+		this.state = this.initialState;
+
+		this.onChange = this.onChange.bind(this)
+		this.onSubmit = this.onSubmit.bind(this)
+	}
   static propTypes = {
     setAlert: PropTypes.func.isRequired
   }
 
-	state = {
-		caption: ''
-  };
-
 	onChange = (e) => this.setState({ [e.target.name]: e.target.value });
 
-	onSubmit = (e) => {
-    e.preventDefault();
-    // return console.log(this.state.caption)
+	onSubmit = async (e) => {
+		e.preventDefault();
 		if (this.state.caption === '') {
 			this.props.setAlert('  Please Type In Your Caption', 'dark');
 		}
 		else {
-
+			this.props.setAlert('Thank You For adding A Captions, Hope You added a Reasonable one though😋...', 'success');
+			await this.props.addCaption(this.state);
+			this.setState(this.initialState);
+			window.location.reload();
 		}
 	};
 
@@ -29,7 +44,7 @@ class Form extends Component {
         <form
           className='form mt-2'
           onSubmit={this.onSubmit}
-           style={{ width: '600px'}}>
+           style={{ width: '600px' }}>
 					<input
 						type='text'
             name='caption'
@@ -42,10 +57,14 @@ class Form extends Component {
 						Add Caption
 					</button>
 				</form>
-
 			</div>
 		);
-	}
+	};
 }
 
-export default Form;
+const formTable = connect(
+	null,
+	mapDispatchToProps
+)(Form)
+
+export default formTable;
