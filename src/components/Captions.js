@@ -1,0 +1,37 @@
+import React, { Component } from 'react'
+import { connect } from 'react-redux';
+import { getAllCaptions } from '../redux/actions/index'
+import Spinner from './Spinner'
+import CaptionCard from './captionCard';
+import PropTypes from 'prop-types'
+
+class Captions extends Component {
+  async componentDidMount() {
+    await this.props.getAllCaptions();
+  }
+
+  render() {
+    const captionText =  this.props.captions.map((caption) => <CaptionCard key={caption.id} content={caption.caption}/>);
+    if (this.props.captions.length < 1) {
+      return <Spinner/>
+    } else {
+      return (
+        this.props.captions &&
+        <div className="d-flex flex-wrap">
+          {captionText}
+        </div>
+      )
+    }
+  }
+}
+
+Captions.prototypes = {
+  getAllCaptions: PropTypes.func.isRequired,
+  caption: PropTypes.array.isRequired
+}
+
+const mapStateToProps = (state) => {
+  return { captions: state.captions }
+};
+
+export default connect(mapStateToProps, { getAllCaptions })(Captions);

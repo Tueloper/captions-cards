@@ -4,12 +4,16 @@ const initialState = {
   captions: []
 };
 
-function rootReducer (state = initialState, action) {
-
-  // payload is an object
-  if (action.type === GET_ALL_CAPTIONS) return state.characters = [...state.captions, action.payload];
-
-  return state;
+function rootReducer (state = initialState, { type, payload }) {
+  switch (type) {
+    case GET_ALL_CAPTIONS:
+      return {
+        ...state,
+        captions: payload
+      }
+    default:
+      return state;
+  }
 }
 
 export default rootReducer;
