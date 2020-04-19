@@ -28,7 +28,9 @@ export class App extends Component {
               <Route exact path='/' render={(props) => {
                 return <Home {...props} setAlert={this.setAlert}/>
               }}/>
-              <Route exact path='/tags' component={Tags}/>
+              <Route exact path='/tags' render={(props) => {
+                return <Tags {...props} setAlert={this.setAlert}/>
+              }}/>
               <Route exact path='/tag/caption' component={CaptionTag}/>
             </Switch>
           </div>

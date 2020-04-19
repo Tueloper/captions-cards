@@ -21,3 +21,6 @@ export const getAllTags = () => async (dispatch) => {
     }));
 };
 
+export const addTag = (tag) => async (dispatch) => {
+  await Axios.post('https://capcards-api.herokuapp.com/v1.0/api/caption/', tag).then((res) => console.log(res))
+};

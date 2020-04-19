@@ -20,7 +20,8 @@ class Form extends Component {
 		this.onSubmit = this.onSubmit.bind(this)
 	}
   static propTypes = {
-    setAlert: PropTypes.func.isRequired
+		setAlert: PropTypes.func.isRequired,
+		addCaption: PropTypes.func.isRequired
   }
 
 	onChange = (e) => this.setState({ [e.target.name]: e.target.value });
@@ -28,7 +29,7 @@ class Form extends Component {
 	onSubmit = async (e) => {
 		e.preventDefault();
 		if (this.state.caption === '') {
-			this.props.setAlert('  Please Type In Your Caption', 'dark');
+			this.props.setAlert('Please Type In Your Caption!!.. 😡', 'dark');
 		}
 		else {
 			this.props.setAlert('Thank You For adding A Captions, Hope You added a Reasonable one though😋...', 'success');
