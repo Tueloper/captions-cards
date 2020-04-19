@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Captions from './../components/Captions';
-import Form from './../components/Form';
+import Form from '../components/CaptionForm';
 
 export class Home extends Component {
   render() {

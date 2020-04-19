@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { getAllCaptions } from '../redux/actions/index'
 import Spinner from './Spinner'
-import CaptionCard from './captionCard';
+import CaptionCard from './Cards';
 import PropTypes from 'prop-types'
 
 class Captions extends Component {
