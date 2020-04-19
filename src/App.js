@@ -21,7 +21,7 @@ export class App extends Component {
       <Router>
         <div className="App">
           <Navbar/>
-          <div className="container mt-4">
+          <div className="container" style={{ marginTop: '9rem'}}>
             <Notification alert={this.state.alert}/>
             <Switch>
               {/* Captions */}
