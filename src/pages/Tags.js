@@ -5,7 +5,6 @@ export class Tags extends Component {
   render() {
     return (
       <div>
-        <h1>Tags Page</h1>
         <AllTags/>
       </div>
     )
