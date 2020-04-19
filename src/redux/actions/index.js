@@ -1,4 +1,4 @@
-import { GET_ALL_CAPTIONS } from '../actionTypes/index';
+import { GET_ALL_CAPTIONS, GET_ALL_TAGS } from '../actionTypes/index';
 import Axios from 'axios';
 
 export const getAllCaptions = () => async (dispatch) => {
@@ -12,3 +12,12 @@ export const getAllCaptions = () => async (dispatch) => {
 export const addCaption = (caption) => async (dispatch) => {
   await Axios.post('https://capcards-api.herokuapp.com/v1.0/api/caption/', caption);
 };
+
+export const getAllTags = () => async (dispatch) => {
+  await Axios.get('https://capcards-api.herokuapp.com/v1.0/api/tag/')
+    .then((response) => dispatch({
+      type: GET_ALL_TAGS,
+      payload: response.data.data.tags,
+    }));
+};
+

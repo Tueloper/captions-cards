@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { addCaption } from './../redux/actions/index';
+import { addCaption } from '../redux/actions/index';
 import { connect } from 'react-redux';
 
 function mapDispatchToProps(dispatch) {
