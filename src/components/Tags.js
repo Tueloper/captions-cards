@@ -1,13 +1,23 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { getAllTags } from './../redux/actions/index'
 
-export class Tags extends Component {
+class Tags extends Component {
+  async componentDidMount() {
+    await this.props.getAllTags();
+  }
+
   render() {
     return (
       <div>
-
+hdhhd
       </div>
     )
   }
 }
 
-export default Tags
+const mapStateToProps = state => {
+  return { tags: state.tags }
+}
+
+export default connect(mapStateToProps, { getAllTags })(Tags)
