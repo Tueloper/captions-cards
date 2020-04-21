@@ -1,13 +1,55 @@
-import React from 'react';
+import React from 'react'
+import { connect } from 'react-redux';
+import styled, { keyframes } from 'styled-components';
+import { slideInDown } from 'react-animations';
 
-const Notification = ({ alert }) => {
-	return (
-		alert !== null && (
-			<div className={`alert alert-${alert.type}`}>
-				<i className='fa fa-info-circle' /> {alert.msg}
-			</div>
-		)
-	);
-};
+const slideAnimation = keyframes`${slideInDown}`;
 
-export default Notification;
+const NotificationContainer = styled.div`
+  position: absolute;
+  z-index: 101;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: #fde073;
+  text-align: center;
+  line-height: 2.5;
+  overflow: hidden;
+  padding: 4px;
+  -webkit-box-shadow: 0 0 5px black;
+  -moz-box-shadow: 0 0 5px black;
+  box-shadow: 0 0 5px black;
+  animation: 1s ${slideAnimation}
+`;
+
+const HeaderContainer = styled.h3`
+  font-weight: bold;
+`;
+
+const MessageContainer = styled.p`
+  font-size: 10px
+`;
+const Notification = ({ notifications }) => {
+
+    return (
+      notifications !== null && notifications.length > 0 &&
+        notifications.map((notification) => (
+          <NotificationContainer>
+          <HeaderContainer>
+            {notification.status}
+          </HeaderContainer>
+          <MessageContainer>
+            {notification.msg}
+          </MessageContainer>
+        </NotificationContainer>
+    ))
+    )
+
+
+}
+
+const mapStateToProps = (state) => {
+  return { notifications: state.notifications }
+}
+
+export default connect(mapStateToProps, {})(Notification)

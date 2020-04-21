@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { getAllTags } from './../redux/actions/index';
+import { getAllTags } from './../redux/actions/caption';
 import PropTypes from 'prop-types'
 import Spinner from './Spinner';
 import TagCard from './Cards';

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { addCaption } from '../redux/actions/index';
+import { addCaption } from '../redux/actions/caption';
 import { connect } from 'react-redux';
 
 function mapDispatchToProps(dispatch) {
@@ -35,7 +35,9 @@ class Form extends Component {
 			this.props.setAlert('Thank You For adding A Captions, Hope You added a Reasonable one though😋...', 'success');
 			await this.props.addCaption(this.state);
 			this.setState(this.initialState);
-			window.location.reload();
+			setTimeout(() => {
+				window.location.reload();
+			}, 4000);
 		}
 	};
 

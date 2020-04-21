@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { addTag } from './../redux/actions/index';
+import { addTag } from './../redux/actions/caption';
 import { connect } from 'react-redux';
 
 function mapDispatchToProps(dispatch) {
