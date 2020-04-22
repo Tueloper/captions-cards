@@ -1,26 +1,21 @@
-import {
-  GET_ALL_CAPTIONS,
-  GET_ALL_TAGS,
-  FAIL_GET_ALL_CAPTIONS,
-  // SET_LOADER
-} from '../actionTypes/index';
+import { GET_ALL_CAPTIONS, FAIL_GET_ALL_CAPTIONS } from '../actionTypes/index';
 import { setNotification } from './notification';
 import Axios from 'axios';
 
-export const getAllCaptions = async () => async (dispatch) => {
+export const getAllCaptions = () => async (dispatch) => {
   let status;
   let msg;
   try {
     const response = await Axios.get('https://capcards-api.herokuapp.com/v1.0/api/caption/')
     status = response.data.status;
     msg = 'Captions Gotten Successfully';
-    // return console.log(response)
-    dispatch(setNotification(status, msg, 'green'))
+    dispatch(setNotification(status, msg))
     dispatch(
       {
       type: GET_ALL_CAPTIONS,
       payload: response.data.data.captions,
-      });
+      }
+    );
     } catch (error) {
       dispatch({
         type: FAIL_GET_ALL_CAPTIONS,

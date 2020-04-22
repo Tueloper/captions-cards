@@ -1,40 +1,41 @@
 import React from 'react'
 import { connect } from 'react-redux';
 import styled, { keyframes } from 'styled-components';
-import { slideInDown } from 'react-animations';
+import { slideInRight } from 'react-animations';
 
-const slideAnimation = keyframes`${slideInDown}`;
+const slideAnimation = keyframes`${slideInRight}`;
 
 const NotificationContainer = styled.div`
   position: absolute;
   z-index: 101;
-  top: 0;
   right: 0;
-  background: #fde073;
+  botton: 0;
   text-align: center;
-  line-height: 2.5;
-  width: 20%,
+  line-height: 3.5;
+  width: 120%,
+  color: #fff,
   overflow: hidden;
-  padding: 4px;
-  -webkit-box-shadow: 0 0 5px black;
-  -moz-box-shadow: 0 0 5px black;
-  box-shadow: 0 0 5px black;
+  padding: 7px 50px;
+  -webkit-box-shadow: 0 0 5px grey;
+  -moz-box-shadow: 0 0 5px grey;
+  box-shadow: 0 0 5px grey;
   animation: 1s ${slideAnimation}
 `;
 
 const HeaderContainer = styled.h3`
-  font-weight: bold;
+  font-size: 40px;
 `;
 
 const MessageContainer = styled.p`
-  font-size: 10px
+  font-size: 15px;
 `;
 const Notification = ({ notifications }) => {
-  // return console.log(notifications)
     return (
       notifications !== null && notifications.length > 0 &&
         notifications.map((notification) => (
-          <NotificationContainer>
+          <NotificationContainer key={notification.id} style={
+            { backgroundColor: notifications.status = 'success' ? '#DA3343' : '#F3A72B', color: '#fff' }
+          }>
           <HeaderContainer>
             {notification.status}
           </HeaderContainer>
@@ -47,7 +48,7 @@ const Notification = ({ notifications }) => {
 }
 
 const mapStateToProps = (state) => {
-  return { notifications: state.notifications }
+  return { notifications: state.Notifications.notifications }
 }
 
 export default connect(mapStateToProps, {})(Notification)

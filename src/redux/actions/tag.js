@@ -1,7 +1,6 @@
 import {
   GET_ALL_TAGS,
-  FAIL_GET_ALL_TAGS,
-  // SET_LOADER
+  FAIL_GET_ALL_TAGS
 } from '../actionTypes/index';
 import { setNotification } from './notification';
 import Axios from 'axios';
@@ -12,9 +11,9 @@ export const getAllTags = () => async (dispatch) => {
   try {
     const response = await Axios.get('https://capcards-api.herokuapp.com/v1.0/api/tag/');
     status = response.data.status;
-    msg = 'Captions Gotten Successfully';
-    dispatch(setNotification(status, msg, 'green'))
-    await dispatch({
+    msg = 'Tags Gotten Successfully';
+    dispatch(setNotification(status, msg))
+    dispatch({
         type: GET_ALL_TAGS,
         payload: response.data.data.tags,
     });
