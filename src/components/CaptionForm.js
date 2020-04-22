@@ -37,7 +37,7 @@ class Form extends Component {
 			this.setState(this.initialState);
 			setTimeout(() => {
 				window.location.reload();
-			}, 4000);
+			}, 5000);
 		}
 	};
 

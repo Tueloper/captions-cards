@@ -1,4 +1,5 @@
-import { GET_ALL_CAPTIONS, FAIL_GET_ALL_CAPTIONS } from '../actionTypes/index';
+/* eslint-disable no-lone-blocks */
+import { GET_ALL_CAPTIONS, FAIL_GET_ALL_CAPTIONS, FAIL_ADD_CAPTION } from '../actionTypes/index';
 import { setNotification } from './notification';
 import Axios from 'axios';
 
@@ -17,17 +18,37 @@ export const getAllCaptions = () => async (dispatch) => {
       }
     );
     } catch (error) {
+      {
+        error.message.startsWith('Network')
+          ? dispatch(setNotification(error.status, error.message))
+          : dispatch(setNotification(error.response.data.error.status, error.response.data.error.status ))
+      }
       dispatch({
         type: FAIL_GET_ALL_CAPTIONS,
         payload: error.response.data.errors
       })
-      return console.log(error.response)
-    // status = error.response.status,
-    // msg =error.response.error.message;
-    // return setNotification(status, msg, 'red');
     }
 };
 
 export const addCaption = (caption) => async (dispatch) => {
-  await Axios.post('https://capcards-api.herokuapp.com/v1.0/api/caption/', caption);
+  let status;
+  let msg;
+  try {
+    const res = await Axios.post('https://capcards-api.herokuapp.com/v1.0/api/caption/', caption);
+    status = res.data.status;
+    msg = 'Caption Added Successfully';
+    dispatch(setNotification(status, msg));
+  } catch (error) {
+    // return console.log(error.response)
+    {
+      error.message.startsWith('Network')
+        ? dispatch(setNotification(error.status, error.message))
+        : dispatch(setNotification(error.response.status, error.response.data.error.message ))
+    }
+    dispatch({
+      type: FAIL_ADD_CAPTION,
+      payload: error.response.data.errors
+    })
+  }
+
 };
