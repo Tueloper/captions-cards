@@ -1,38 +1,38 @@
-import React, { Component } from 'react'
+import React, { useEffect } from 'react'
 import { connect } from 'react-redux';
 import { getAllCaptions } from './../redux/actions/caption'
 import Spinner from './Spinner'
 import CaptionCard from './Cards';
 import PropTypes from 'prop-types'
 
-class Captions extends Component {
-  async componentDidMount() {
-    console.log('I have loaded')
-    await this.props.getAllCaptions();
-  }
+const Captions = ({ getAllCaptions, captions, loading }) => {
+  useEffect(() => {
+    getAllCaptions();
+  }, [getAllCaptions]);
 
-  static prototypes = {
-    getAllCaptions: PropTypes.func.isRequired,
-    caption: PropTypes.array.isRequired
-  }
-
-  render () {
-    return null
-    const captionText =  this.props.captions.map((caption) => <CaptionCard key={caption.id} content={caption.caption}/>);
-    if (this.props.captions.length < 1) {
+    // return console.log(loading);
+    if (loading) {
       return <Spinner/>
-    } else {
-      return (
-        this.props.captions &&
-        <div className="d-flex justify-content-center flex-wrap">
-          {captionText}
-        </div>
-      )
     }
-  }
+    return null
+
+      // return (
+      //   this.props.captions &&
+      //   <div className="d-flex justify-content-center flex-wrap">
+      //     {
+      //     this.props.captions.map((caption) =>
+      //       <CaptionCard key={caption.id} content={caption.caption}/>)
+      //     }
+      //   </div>
+      // )
+
+
 }
 
-
+Captions.prototypes = {
+  getAllCaptions: PropTypes.func.isRequired,
+  caption: PropTypes.array.isRequired
+}
 
 const mapStateToProps = (state) => ({
   captions: state.captions,

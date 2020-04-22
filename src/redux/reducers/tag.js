@@ -1,16 +1,16 @@
-import { GET_ALL_CAPTIONS } from './../actionTypes/index';
+import { GET_ALL_TAGS } from './../actionTypes/index';
 
 const initialState = {
-  captions: [],
+  tags: [],
   loading: true
 };
 
 function rootReducer (state = initialState, { type, payload }) {
   switch (type) {
-    case GET_ALL_CAPTIONS:
+    case GET_ALL_TAGS:
       return {
         ...state,
-        captions: payload,
+        tags: payload,
         loading: false
       }
     default:

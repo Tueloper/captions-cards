@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { getAllTags } from './../redux/actions/caption';
+import { getAllTags } from './../redux/actions/tag';
 import PropTypes from 'prop-types'
 import Spinner from './Spinner';
 import TagCard from './Cards';
@@ -9,7 +9,7 @@ const Tags = ({ getAllTags, tags }) => {
   useEffect(() => {
     getAllTags();
   }, [getAllTags])
-
+  return null
   const tagText = tags.map((tag) => {
     // the keyRef was generated to aviod duplicate keys as some tag names where repeated
     let keyRef = Math.floor(Math.random() * 8999 + 1000);

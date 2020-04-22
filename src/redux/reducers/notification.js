@@ -7,12 +7,13 @@ const initialState = {
 function rootReducer (state = initialState, { type, payload }) {
   switch (type) {
     case ADD_NOTIFICATION:
-      return {
-        ...state,
-        notifications: payload
-      }
+      return Object.assign({}, state, {
+        notifications: state.notifications.concat(payload)
+      })
     case REMOVE_NOTIFICATION:
-      return state.notifications.filter((notification) => notification.id !== payload)
+      return Object.assign({}, state, {
+        notifications: state.notifications.filter((item, i) => item.id !== payload )
+      })
     default:
       return state;
   }

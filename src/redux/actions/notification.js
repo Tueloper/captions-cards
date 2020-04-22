@@ -8,7 +8,7 @@ export const setNotification = (status, msg, alertType, timeout = 5000) => async
   const id = Toolbox.generateReference(status)
   dispatch({
     type: ADD_NOTIFICATION,
-    payload: { id, status, msg, alertType },
+    payload: { id, status, msg, alertType }
   });
   setTimeout(() => dispatch({ type: REMOVE_NOTIFICATION, payload: id }), timeout)
 };
