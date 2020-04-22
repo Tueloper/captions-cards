@@ -5,7 +5,7 @@ import Alert from './components/Alert';
 import Home from './pages/Home';
 import Tags from './pages/Tags';
 import CaptionTag from './pages/CaptionTags';
-import Notification from './components/Notification';
+// import Notification from './components/Notification';
 
 export class App extends Component {
   state = {
@@ -22,7 +22,7 @@ export class App extends Component {
       <Router>
         <div className="App">
           <Navbar/>
-          <Notification/>
+          {/* <Notification/> */}
           <div className="container" style={{ marginTop: '9rem'}}>
             <Alert alert={this.state.alert}/>
             <Switch>
@@ -34,6 +34,7 @@ export class App extends Component {
               <Route exact path='/tags' render={(props) => {
                 return <Tags {...props} setAlert={this.setAlert}/>
               }}/>
+              {/* Caption Tags */}
               <Route exact path='/tag/caption' component={CaptionTag}/>
             </Switch>
           </div>

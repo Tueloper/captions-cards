@@ -9,11 +9,11 @@ const NotificationContainer = styled.div`
   position: absolute;
   z-index: 101;
   top: 0;
-  left: 0;
   right: 0;
   background: #fde073;
   text-align: center;
   line-height: 2.5;
+  width: 20%,
   overflow: hidden;
   padding: 4px;
   -webkit-box-shadow: 0 0 5px black;
@@ -30,7 +30,7 @@ const MessageContainer = styled.p`
   font-size: 10px
 `;
 const Notification = ({ notifications }) => {
-
+  // return console.log(notifications)
     return (
       notifications !== null && notifications.length > 0 &&
         notifications.map((notification) => (
@@ -44,8 +44,6 @@ const Notification = ({ notifications }) => {
         </NotificationContainer>
     ))
     )
-
-
 }
 
 const mapStateToProps = (state) => {

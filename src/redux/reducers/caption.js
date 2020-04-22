@@ -2,7 +2,8 @@ import { GET_ALL_CAPTIONS, GET_ALL_TAGS } from './../actionTypes/index';
 
 const initialState = {
   captions: [],
-  tags: []
+  tags: [],
+  loading: true
 };
 
 function rootReducer (state = initialState, { type, payload }) {
@@ -10,7 +11,8 @@ function rootReducer (state = initialState, { type, payload }) {
     case GET_ALL_CAPTIONS:
       return {
         ...state,
-        captions: payload
+        captions: payload,
+        loading: false
       }
     case GET_ALL_TAGS:
       return {
