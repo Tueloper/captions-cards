@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
-import Notification from './components/Notification'
+import Alert from './components/Alert';
 import Home from './pages/Home';
 import Tags from './pages/Tags';
 import CaptionTag from './pages/CaptionTags';
+import Notification from './components/Notification';
 
 export class App extends Component {
   state = {
@@ -21,14 +22,19 @@ export class App extends Component {
       <Router>
         <div className="App">
           <Navbar/>
+          <Notification/>
           <div className="container" style={{ marginTop: '9rem'}}>
-            <Notification alert={this.state.alert}/>
+            <Alert alert={this.state.alert}/>
             <Switch>
               {/* Captions */}
               <Route exact path='/' render={(props) => {
                 return <Home {...props} setAlert={this.setAlert}/>
               }}/>
-              <Route exact path='/tags' component={Tags}/>
+              {/* Tags */}
+              <Route exact path='/tags' render={(props) => {
+                return <Tags {...props} setAlert={this.setAlert}/>
+              }}/>
+              {/* Caption Tags */}
               <Route exact path='/tag/caption' component={CaptionTag}/>
             </Switch>
           </div>

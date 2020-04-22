@@ -1,25 +1,12 @@
-import { GET_ALL_CAPTIONS, GET_ALL_TAGS } from './../actionTypes/index';
+import { combineReducers } from 'redux';
+import Captions from './caption';
+import Notifications from './notification';
+import Tags from './tag';
 
-const initialState = {
-  captions: [],
-  tags: []
-};
-
-function rootReducer (state = initialState, { type, payload }) {
-  switch (type) {
-    case GET_ALL_CAPTIONS:
-      return {
-        ...state,
-        captions: payload
-      }
-    case GET_ALL_TAGS:
-      return {
-        ...state,
-        tags: payload
-      }
-    default:
-      return state;
-  }
-}
+const rootReducer = combineReducers({
+  Captions,
+  Notifications,
+  Tags
+});
 
 export default rootReducer;
