@@ -56,13 +56,14 @@ export const addCaptionTag = (id) => async (dispatch) => {
     msg = 'Caption Tags Added Successfully';
     tag = res.data.data.tag;
     captions = res.data.data.captions;
-    dispatch(setNotification(status, msg));
     dispatch({
       type: ADD_CAPTION_TAG,
       payload: {
         tag, captions
       }
     })
+    if(captions.length < 1) return dispatch(setNotification('404', `No Captions For ${tag}, Please Try again for another Tag`))
+    dispatch(setNotification(status, msg));
   } catch (error) {
     // return console.log(error.response)
     {
