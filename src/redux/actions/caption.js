@@ -1,5 +1,5 @@
 /* eslint-disable no-lone-blocks */
-import { GET_ALL_CAPTIONS, FAIL_GET_ALL_CAPTIONS, FAIL_ADD_CAPTION } from '../actionTypes/index';
+import { GET_ALL_CAPTIONS, ADD_CAPTION_TAG } from '../actionTypes/index';
 import { setNotification } from './notification';
 import Axios from 'axios';
 
@@ -23,10 +23,6 @@ export const getAllCaptions = () => async (dispatch) => {
           ? dispatch(setNotification(error.status, error.message))
           : dispatch(setNotification(error.response.data.error.status, error.response.data.error.status ))
       }
-      dispatch({
-        type: FAIL_GET_ALL_CAPTIONS,
-        payload: error.response.data.errors
-      })
     }
 };
 
@@ -39,16 +35,40 @@ export const addCaption = (caption) => async (dispatch) => {
     msg = 'Caption Added Successfully';
     dispatch(setNotification(status, msg));
   } catch (error) {
+
+    {
+      error.message.startsWith('Network')
+        ? dispatch(setNotification(error.status, error.message))
+        : dispatch(setNotification(error.response.status, error.response.data.error.message ))
+    }
+  }
+};
+
+export const addCaptionTag = (id) => async (dispatch) => {
+  let status;
+  let msg;
+  let tag;
+  let captions;
+  try {
+    const res = await Axios.get(`https://capcards-api.herokuapp.com/v1.0/api/caption/withTag?tagId=${id}`);
+    console.log(res);
+    status = res.data.status;
+    msg = 'Caption Tags Added Successfully';
+    tag = res.data.data.tag;
+    captions = res.data.data.captions;
+    dispatch(setNotification(status, msg));
+    dispatch({
+      type: ADD_CAPTION_TAG,
+      payload: {
+        tag, captions
+      }
+    })
+  } catch (error) {
     // return console.log(error.response)
     {
       error.message.startsWith('Network')
         ? dispatch(setNotification(error.status, error.message))
         : dispatch(setNotification(error.response.status, error.response.data.error.message ))
     }
-    dispatch({
-      type: FAIL_ADD_CAPTION,
-      payload: error.response.data.errors
-    })
   }
-
 };
