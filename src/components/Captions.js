@@ -5,7 +5,7 @@ import Spinner from './Spinner'
 import CaptionCard from './Cards';
 import PropTypes from 'prop-types'
 
-const Captions = ({ getAllCaptions, captions, loading }) => {
+const Captions = ({ getAllCaptions, captions, loading = false }) => {
   useEffect(() => {
     getAllCaptions();
   }, [getAllCaptions]);
@@ -17,7 +17,7 @@ const Captions = ({ getAllCaptions, captions, loading }) => {
     <div className="d-flex justify-content-center flex-wrap">
       {
       captions.map((caption) =>
-        <CaptionCard key={caption.id} content={caption.caption}/>)
+        <CaptionCard key={caption.id} content={caption.caption}  captionBtn={false}/>)
       }
     </div>
   )

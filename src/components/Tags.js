@@ -18,10 +18,7 @@ const Tags = ({ getAllTags, tags, loading }) => {
       <div className='d-flex justify-content-center flex-wrap'>
         {
           tags.map((tag) => {
-            // the keyRef was generated to aviod duplicate keys as some tag names where repeated
-            let keyRef = Math.floor(Math.random() * 8999 + 1000);
-            keyRef = `${tag}_${keyRef}`;
-            return <TagCard key={keyRef} content={tag} />
+            return <TagCard key={tag.id} content={tag.tag} id={tag.id} captionBtn={true}/>
           })
         }
       </div>

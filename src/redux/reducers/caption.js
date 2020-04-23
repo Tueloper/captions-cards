@@ -1,8 +1,10 @@
-import { GET_ALL_CAPTIONS } from './../actionTypes/index';
+import { GET_ALL_CAPTIONS, ADD_CAPTION_TAG } from './../actionTypes/index';
 
 const initialState = {
   captions: [],
-  loading: true
+  loading: true,
+  tag: '',
+  tagCaptions: []
 };
 
 function rootReducer (state = initialState, { type, payload }) {
@@ -11,6 +13,13 @@ function rootReducer (state = initialState, { type, payload }) {
       return {
         ...state,
         captions: payload,
+        loading: false
+      }
+    case ADD_CAPTION_TAG:
+      return {
+        ...state,
+        tag: payload.tag,
+        tagCaptions: payload.captions,
         loading: false
       }
     default:
